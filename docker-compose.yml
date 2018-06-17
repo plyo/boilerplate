@@ -1,0 +1,21 @@
+version: '3.4'
+services:
+  api:
+    image: node:8.11.3-alpine
+    environment:
+      - PORT=3000
+      - NODE_ENV
+      - ELASTIC_HOST
+      - KEEP_ALIVE_CONNECTION
+      - SUPPRESS_ERROR_STACK
+    ports:
+      - 3000:3000
+      - 9229:9229
+    volumes:
+      - yarn:/root/.cache/yarn
+      - ./:/usr/src/app
+    working_dir: /usr/src/app
+    command: node src/server.js
+
+volumes:
+  yarn:

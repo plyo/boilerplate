@@ -1,0 +1,26 @@
+{
+  "name": "boilerplate",
+  "version": "1.0.0",
+  "description": "Boilerplate for node.js based micro service",
+  "main": "index.js",
+  "repository": "git@github.com:plyo/boilerplate.git",
+  "author": "Andrew Balakirev <balakirev.andrey@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.3",
+    "pino": "^4.17.3",
+    "pino-elasticsearch": "^2.2.1",
+    "pino-http": "^3.2.2",
+    "superagent": "^3.8.3"
+  },
+  "devDependencies": {
+    "@plyo/dev-tools": "1.0.0-alpha.1"
+  },
+  "scripts": {
+    "lint": "node ./node_modules/@plyo/dev-tools/run/lint.js",
+    "lint-staged": "node ./node_modules/@plyo/dev-tools/run/lint.js --staged",
+    "precommit": "node ./node_modules/@plyo/dev-tools/run/lint.js --staged"
+  }
+}
