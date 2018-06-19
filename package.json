@@ -16,11 +16,12 @@
     "superagent": "^3.8.3"
   },
   "devDependencies": {
-    "@plyo/dev-tools": "1.0.0-alpha.1"
+    "@plyo/dev-tools": "1.0.0-alpha.4"
   },
   "scripts": {
-    "lint": "node ./node_modules/@plyo/dev-tools/run/lint.js",
-    "lint-staged": "node ./node_modules/@plyo/dev-tools/run/lint.js --staged",
-    "precommit": "node ./node_modules/@plyo/dev-tools/run/lint.js --staged"
+    "lint": "lint",
+    "lint-staged": "lint --staged",
+    "precommit": "lint --staged",
+    "start": "nodemon src/server.js"
   }
 }

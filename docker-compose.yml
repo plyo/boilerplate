@@ -15,7 +15,7 @@ services:
       - yarn:/root/.cache/yarn
       - ./:/usr/src/app
     working_dir: /usr/src/app
-    command: node src/server.js
+    command: yarn start
 
 volumes:
   yarn:
