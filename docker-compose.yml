@@ -8,6 +8,8 @@ services:
       - ELASTIC_HOST
       - KEEP_ALIVE_CONNECTION
       - SUPPRESS_ERROR_STACK
+      - ENV_NAME=local
+      - JSON_LOGS
     ports:
       - 3000:3000
       - 9229:9229

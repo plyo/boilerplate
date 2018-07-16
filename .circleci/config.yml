@@ -1,0 +1,39 @@
+version: 2
+jobs:
+  publish:
+    docker:
+      - image: circleci/node:8.11.1
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: Build and push docker image
+          command: |
+            image_name=${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_TAG}
+            docker build -t ${image_name} .
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker push ${image_name}
+      - run:
+          name: Publish release notes
+          command: |
+            yarn global add github-release-notes
+            yarn gren
+      - run:
+          name: Post message about deployment into slack
+          command: |
+            slack_payload='{"channel":"builds","username":"Deployer","icon_emoji":"robot_face","text":"<!channel> Tag https://github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/releases/tag/'${CIRCLE_TAG}' pushed to docker registry and ready for deploy"}'
+            curl -X POST --data "payload=${slack_payload}" ${SLACK_WEBHOOK_URL}
+
+workflows:
+  version: 2
+  test_and_deploy:
+    jobs:
+      - publish:
+          filters:
+            branches:
+              ignore:
+                - /.*/
+            tags:
+              only:
+                - /v.*/

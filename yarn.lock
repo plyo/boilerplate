@@ -78,9 +78,9 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@plyo/dev-tools@1.0.0-alpha.4":
-  version "1.0.0-alpha.4"
-  resolved "https://registry.yarnpkg.com/@plyo/dev-tools/-/dev-tools-1.0.0-alpha.4.tgz#6df435d294d9940b860f5c4033736563850bcc64"
+"@plyo/dev-tools@1.0.0-alpha.5":
+  version "1.0.0-alpha.5"
+  resolved "https://registry.yarnpkg.com/@plyo/dev-tools/-/dev-tools-1.0.0-alpha.5.tgz#c701784d7f65cde4ed2407121ebda3a540774b30"
   dependencies:
     babel-eslint "^8.2.2"
     eslint "^4.18.0"

@@ -18,12 +18,13 @@
     "superagent": "^3.8.3"
   },
   "devDependencies": {
-    "@plyo/dev-tools": "1.0.0-alpha.4"
+    "@plyo/dev-tools": "1.0.0-alpha.5"
   },
   "scripts": {
     "lint": "lint",
     "lint-staged": "lint --staged",
     "precommit": "lint --staged",
-    "start": "nodemon --watch src src/server.js"
+    "start": "nodemon --watch src src/server.js",
+    "gren": "gren release --username=plyo --repo=finn-integration --override"
   }
 }
