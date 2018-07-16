@@ -1,0 +1,33 @@
+version: '3.4'
+services:
+  boilerplate:
+    image: node:8.11.3-alpine
+    environment:
+      # port for running application inside docker container
+      - PORT=3000
+
+      # set to "production" for production
+      - NODE_ENV
+
+      # elasticsearch to pipe logs to
+      - ELASTIC_HOST
+
+      # should we show error stack to users, set to true for prod envs
+      - SUPPRESS_ERROR_STACK
+
+      # name of the service in logs
+      - ENV_NAME=local
+
+      # set to true in production
+      - JSON_LOGS
+    ports:
+      - 3000:3000
+      - 9229:9229
+    volumes:
+      - yarn:/root/.cache/yarn
+      - ./:/usr/src/app
+    working_dir: /usr/src/app
+    command: yarn start
+
+volumes:
+  yarn:
