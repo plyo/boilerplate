@@ -1,7 +1,7 @@
-const pino = require("pino");
-const config = require("../config/config");
+const pino = require('pino');
+const config = require('config');
 
-const logger = pino(config.logger);
+const logger = pino(config.get('logger'));
 
 let id = 0;
 const timers = {};
@@ -17,13 +17,13 @@ logger.startTimer = () => {
       const duration = new Date() - start;
       logger.info({
         ...meta,
-        duration
+        duration,
       });
       delete timers[profiler.timerId];
     },
     getDuration() {
       return new Date() - timers[profiler.timerId];
-    }
+    },
   };
   id += 1;
   timers[profiler.timerId] = new Date();

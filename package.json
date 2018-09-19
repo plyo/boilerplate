@@ -9,6 +9,7 @@
   "dependencies": {
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.3",
+    "config": "^2.0.1",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.3",
     "pino": "^4.17.3",
@@ -18,7 +19,7 @@
     "superagent": "^3.8.3"
   },
   "devDependencies": {
-    "@plyo/dev-tools": "1.0.0-alpha.5"
+    "@plyo/dev-tools": "1.0.0"
   },
   "scripts": {
     "lint": "lint",

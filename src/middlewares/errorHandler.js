@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-const logger = require("../tools/logger");
-const config = require("../config/config");
+const config = require('config');
+const logger = require('../tools/logger');
 
 /**
  * Usually goes with 400 status code
@@ -34,11 +34,9 @@ const config = require("../config/config");
 
 function formatValidationErrors(fields) {
   const errors = { errors: {} };
-  Object.keys(fields).forEach(fieldName => {
+  Object.keys(fields).forEach((fieldName) => {
     const fieldErrors = fields[fieldName];
-    errors.errors[fieldName] = Array.isArray(fieldErrors)
-      ? fieldErrors
-      : [fieldErrors];
+    errors.errors[fieldName] = Array.isArray(fieldErrors) ? fieldErrors : [fieldErrors];
   });
   return errors;
 }
@@ -47,33 +45,31 @@ function defaultHandler(res, err) {
   logger.error(err);
   res.status(500).json({
     errors: {
-      "": config.app.suppressErrorStack
-        ? [err.message]
-        : [err.message, err.stack]
-    }
+      '': config.get('app.suppressErrorStack') ? [err.message] : [err.message, err.stack],
+    },
   });
 }
 
 function errorHandler(err, req, res, next) {
   logger.debug(err.message, err);
   switch (err.name) {
-    case "FieldValidationError":
+    case 'FieldValidationError':
       res.status(err.statusCode).json({
         errors: {
-          [err.field]: Array.isArray(err.message) ? err.message : [err.message]
-        }
+          [err.field]: Array.isArray(err.message) ? err.message : [err.message],
+        },
       });
       break;
 
-    case "FieldsValidationError":
+    case 'FieldsValidationError':
       res.status(err.statusCode).json(formatValidationErrors(err.fields));
       break;
 
-    case "HttpError":
+    case 'HttpError':
       res.status(err.statusCode).json({
         errors: {
-          "": Array.isArray(err.message) ? err.message : [err.message]
-        }
+          '': Array.isArray(err.message) ? err.message : [err.message],
+        },
       });
       break;
 
