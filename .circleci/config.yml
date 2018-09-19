@@ -22,7 +22,7 @@ jobs:
       - run:
           name: Post message about deployment into slack
           command: |
-            slack_payload='{"channel":"builds","username":"Deployer","icon_emoji":"robot_face","text":"<!channel> Tag https://github.com/'${CIRCLE_PROJECT_USERNAME}'/'${CIRCLE_PROJECT_REPONAME}'/releases/tag/'${CIRCLE_TAG}' pushed to docker registry and ready for deploy"}'
+            slack_payload='{"channel":"builds","username":"Deployer","icon_emoji":"robot_face","text":"Tag https://github.com/'${CIRCLE_PROJECT_USERNAME}'/'${CIRCLE_PROJECT_REPONAME}'/releases/tag/'${CIRCLE_TAG}' pushed to docker registry and ready for deploy"}'
             curl -X POST --data "payload=${slack_payload}" ${SLACK_WEBHOOK_URL}
 
 workflows:
