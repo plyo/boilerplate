@@ -26,6 +26,6 @@
     "lint-staged": "lint --staged",
     "precommit": "lint --staged",
     "start": "nodemon --watch src src/server.js",
-    "gren": "gren release --username=plyo --repo=finn-integration --override"
+    "gren": "gren release --data-source=commits --username=plyo --repo=boilerplate --override"
   }
 }
