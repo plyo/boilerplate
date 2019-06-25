@@ -15,3 +15,4 @@ It includes:
 - hot reload
 - CircleCI config
 - Logger with support to pipe logs into elasticsearch
+
