@@ -1,6 +1,7 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const { postgraphile } = require('postgraphile');
 const pinoHttp = require('pino-http');
 const config = require('config');
 const logger = require('./tools/logger');
@@ -25,6 +26,11 @@ server.use('/', require('./api/hello'));
 
 server.get('/*', (req, res) => res.sendStatus(404));
 server.use(require('./middlewares/errorHandler'));
+
+// for development purposes we run graphiql on /graphiql
+if (config.get('postgraphile.graphiql')) {
+  server.use(postgraphile(config.get('db'), config.get('db.schema'), config.get('postgraphile')));
+}
 
 const port = config.get('app.port');
 server.listen(port, () => {

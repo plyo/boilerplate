@@ -12,13 +12,16 @@
     "config": "^2.0.1",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.3",
-    "lodash": "^4.17.11",
+    "graphql": "^0.13.0",
     "pg": "^7.5.0",
+    "lodash": "^4.17.11",
     "pg-promise": "^8.5.0",
     "pino": "^4.17.3",
     "pino-elasticsearch": "^2.2.1",
     "pino-http": "^3.2.2",
     "plyo-tools": "4",
+    "postgraphile": "^4.0.0",
+    "postgraphile-plugin-connection-filter": "^1.0.0-beta.18",
     "superagent": "^3.8.3"
   },
   "devDependencies": {
@@ -29,6 +32,7 @@
     "lint-staged": "lint --staged",
     "precommit": "lint --staged",
     "start": "nodemon --watch src src/server.js",
+    "start-server": "DEBUG='postgraphile:graphql,postgraphile:request,postgraphile:postgres*' nodemon --watch src src/server.js",
     "gren": "sh -x gren.sh"
   }
 }
