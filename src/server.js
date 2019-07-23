@@ -5,6 +5,13 @@ const pinoHttp = require('pino-http');
 const config = require('config');
 const logger = require('./tools/logger');
 
+const listenDbNotifications = require('./db/notifications');
+
+listenDbNotifications().catch((err) => {
+  logger.error(`Error occurred setting up db notifications listeners: `, err);
+  process.exit(1);
+});
+
 // Configure HTTP server
 const server = express();
 
