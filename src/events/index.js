@@ -3,8 +3,13 @@ const _ = require('lodash');
 const eventType = require('./types');
 
 function resolveHandler(event) {
-  // eslint-disable-next-line
-  const handler = require(`./handlers/${event}`);
+  let handler;
+  try {
+    // eslint-disable-next-line
+    handler = require(`./handlers/${event}`);
+  } catch (err) {
+    throw new Error(`Failed to resolve handler for event ${event}.`);
+  }
 
   if (!_.isFunction(handler)) {
     throw new Error(`Invalid event handler resolved for event ${event}. Expected function`);

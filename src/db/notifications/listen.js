@@ -34,21 +34,29 @@ async function reconnect({ delay = 1000, maxAttempts = 1, onLost }) {
 }
 
 async function setListeners({ connection, eventHandlers }) {
-  connection.client.on('notification', (data) => {
+  connection.client.on('notification', async (data) => {
     logger.debug(data, 'Notification received');
+    let payload;
+
     try {
-      const payload = JSON.parse(data.payload);
-      const handler = eventHandlers[data.channel];
-
-      if (!handler) {
-        logger.warn(`No handler associated with event: ${data.channel}. Skipping...`);
-
-        return;
-      }
-
-      handler(payload);
+      payload = JSON.parse(data.payload);
     } catch (e) {
       logger.error(e, 'Cannot parse notification payload');
+    }
+
+    const handler = eventHandlers[data.channel];
+
+    if (!handler) {
+      logger.warn(`No handler associated with event: ${data.channel}. Skipping...`);
+
+      return;
+    }
+
+    try {
+      await handler(payload);
+    } catch (err) {
+      logger.error(`Error occurred handling event '${data.channel}'`);
+      logger.error(err);
     }
   });
 
