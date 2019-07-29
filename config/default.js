@@ -8,7 +8,7 @@ module.exports = {
   },
   db: {
     user: 'plyo_boilerplate',
-    host: 'localhost',
+    host: 'db',
     database: 'plyo',
     password: 'test',
     port: 5432,
