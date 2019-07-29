@@ -1,10 +1,13 @@
+const PostGraphileConnectionFilterPlugin = require('postgraphile-plugin-connection-filter');
+// const path = require('path');
+
 module.exports = {
   app: {
     port: process.env.PORT || 3000,
     suppressErrorStack: process.env.SUPPRESS_ERROR_STACK || false,
   },
   db: {
-    user: '',
+    user: 'plyo_boilerplate',
     host: 'db',
     database: 'plyo',
     password: 'test',
@@ -23,5 +26,18 @@ module.exports = {
     base: {
       nodeEnv: process.env.NODE_ENV,
     },
+  },
+  postgraphile: {
+    watchPg: false,
+    schemaName: 'public',
+    pgDefaultRole: '', // TO BE DEFINED
+    dynamicJson: true,
+    showErrorStack: true,
+    graphiql: true,
+    ignoreRBAC: false,
+    appendPlugins: [PostGraphileConnectionFilterPlugin],
+
+    // uncomment to generate new schema file
+    // exportJsonSchemaPath: require('path').resolve(__dirname, '../graphql.schema.json'),
   },
 };
