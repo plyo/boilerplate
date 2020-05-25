@@ -19,7 +19,7 @@
     "superagent": "^3.8.3"
   },
   "devDependencies": {
-    "@plyo/dev-tools": "1.0.3"
+    "@plyo/dev-tools": "1.0.4"
   },
   "scripts": {
     "lint": "lint",
