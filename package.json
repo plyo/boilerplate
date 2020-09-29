@@ -15,7 +15,6 @@
     "pino": "^4.17.3",
     "pino-elasticsearch": "^2.2.1",
     "pino-http": "^3.2.2",
-    "plyo-tools": "4",
     "superagent": "^3.8.3"
   },
   "devDependencies": {
