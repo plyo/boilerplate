@@ -6,7 +6,6 @@
   "repository": "git@github.com:plyo/boilerplate.git",
   "author": "Andrew Balakirev <balakirev.andrey@gmail.com>, Alexey Ladeyshchikov <alexey.l@plyo.io>",
   "license": "MIT",
-  "type": "module",
   "dependencies": {
     "body-parser": "^1.19.0",
     "config": "^3.3.6",
@@ -45,12 +44,12 @@
     "eslint-plugin-mocha": "^9.0.0",
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-tsc": "^2.0.0",
-    "ts-node": "^10.1.0",
+    "ts-node": "^10.2.0",
     "typescript": "^4.0.2"
   },
   "scripts": {
     "build": "npx tsc -p ./tsconfig.json --pretty",
-    "start": "nodemon --watch build build/server.js",
+    "start": "nodemon --exec ts-node --watch src src/server.ts",
     "lint": "eslint .",
     "lint-staged": "lint --staged",
     "precommit": "lint --staged",

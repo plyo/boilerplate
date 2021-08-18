@@ -1,6 +1,6 @@
 import * as type from '../types';
 import config from 'config';
-import logger from '../tools/logger.js';
+import logger from '../tools/logger';
 
 /**
  * Usually goes with 400 status code

@@ -4,9 +4,9 @@ import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import pinoHttp from 'pino-http';
 import config from 'config';
-import logger from './tools/logger.js';
-import hello from './api/hello.js';
-import {errorHandler} from './middlewares/errorHandler.js';
+import logger from './tools/logger';
+import hello from './api/hello';
+import {errorHandler} from './middlewares/errorHandler';
 
 // Configure HTTP server
 const server = express();
