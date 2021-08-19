@@ -21,7 +21,7 @@ export interface Config {
 const config: Config = {
   app: {
     port: process.env.PORT || 3000,
-    suppressErrorStack: !!process.env.SUPPRESS_ERROR_STACK || false,
+    suppressErrorStack: process.env.SUPPRESS_ERROR_STACK === 'true',
   },
 
   logger: {
