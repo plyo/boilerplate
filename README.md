@@ -16,10 +16,9 @@ It includes:
 - CircleCI config
 - Logger with support to pipe logs into elasticsearch
 
-##How to use
+## How to use
 - Work in the src directory
 - Write your code in TypeScript
-- When ready, run "yarn build" - it will transpile ts sources into modern js files
-- Run the application by "yarn start"
-- Your application will be served from "build" directory
-- Whenever you change your ts files and re-run "yarn build" the running application will be automatically restarted
+- Run the application by `yarn start` - it uses ts-node to run locally
+- You can use `yarn build` to check production build
+- Whenever you change your ts files the running application will be automatically restarted by nodemon
