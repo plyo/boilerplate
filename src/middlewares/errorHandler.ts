@@ -54,7 +54,7 @@ export function errorHandler(err: type.IError, req: type.IClientRequest, res: ty
     logger.debug(err.message, err);
     switch (err.name) {
         case 'FieldValidationError':
-            res.status(err.statusCode).json({
+            res.status(+err.statusCode).json({
                 errors: {
                     [err.field]: Array.isArray(err.message) ? err.message : [err.message],
                 },
@@ -62,11 +62,11 @@ export function errorHandler(err: type.IError, req: type.IClientRequest, res: ty
             break;
 
         case 'FieldsValidationError':
-            res.status(err.statusCode).json(formatValidationErrors(err.fields));
+            res.status(+err.statusCode).json(formatValidationErrors(err.fields));
             break;
 
         case 'HttpError':
-            res.status(err.statusCode).json({
+            res.status(+err.statusCode).json({
                 errors: {
                     '': Array.isArray(err.message) ? err.message : [err.message],
                 },

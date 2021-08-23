@@ -1,7 +1,8 @@
 export {
-    ClientReques as IClientRequest,
-    ServerResponse as IServerResponse
+    Request as IClientRequest,
+    Response as IServerResponse
 } from 'express';
+
 
 export type dynamicFunction = (...args: any[]) => any;
 
