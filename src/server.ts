@@ -20,7 +20,7 @@ server.use(pinoHttp({logger}));
 server.use('/', hello);
 
 const pageNotFoundCallback = (req: type.IClientRequest, res: type.IServerResponse): type.IServerResponse => {
-    res.sendStatus(404)
+    return res.sendStatus(404);
 }
 
 server.get('/*', pageNotFoundCallback);
