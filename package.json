@@ -54,7 +54,6 @@
     "lint-staged": "lint --staged",
     "precommit": "lint --staged",
     "lint-ts": "eslint '*/**/*.ts' --fix",
-    "ts": "npx tsc -p ./tsconfig.json --noEmit --pretty",
-    "gren": "sh -x gren.sh"
+    "ts": "npx tsc -p ./tsconfig.json --noEmit --pretty"
   }
 }
